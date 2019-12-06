@@ -10,7 +10,7 @@ var authenticate = require('./authenticate');
 // var auth = require('./verify');
 var cors = require('cors');
 
-const url = 'mongodb://localhost:27017/Location';
+const url = 'mongodb://localhost:27017/LocationAlertapp';
 const connect = mongoose.connect(url, {
     useNewUrlParser: true,
     useCreateIndex: true
@@ -21,7 +21,6 @@ connect.then((db) => {
 }, (err) => { console.log(err); });
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 var longlatRouter = require('./routes/longlat');
 
 
@@ -50,7 +49,6 @@ app.use('*', cors({
     credentials: true
 }));
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
 app.use('/longlat', longlatRouter);
 
 module.exports = app;
